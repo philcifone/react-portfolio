@@ -8,7 +8,11 @@ const Link = ({ page, selectedPage, setSelectedPage }) => {
         <AnchorLink
             className={`${selectedPage === lowerCasePage ? "text-yellow" : ""}
                 hover:text-yellow transition duration-500`}
-        ></AnchorLink>
+            href={`${lowerCasePage}`}
+            onClick={() => setSelectedPage(lowerCasePage)}
+        >
+            {page}
+        </AnchorLink>
     )
 }
 
@@ -24,10 +28,16 @@ const Navbar = ({ selectedPage, setSelectedPage }) => {
                 {/* DESKTOP NAV*/}
                 {isAboveSmallScreens ? (
                     <div className="flex-justify-between gap-16 font-opensans text-sm font-semibold">
-
+                        <Link 
+                        page="Home"
+                        selectedPage={selectedPage}
+                        setSelectedPage={setSelectedPage}
+                        />
                     </div>
                 ) : (<div></div>) }
             </div>
         </nav>
     )
 }
+
+export default Navbar;
